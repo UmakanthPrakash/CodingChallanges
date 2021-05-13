@@ -10,7 +10,7 @@ public class ListSetMapCombo {
         List<String> listdata = new ArrayList<>();
         addDataToList(listdata);
 
-        //identify duplicates in list and record how many time they are occurring
+//identify duplicates in list and record how many time they are occurring
         Set<String> treesetdata = new TreeSet<>();
         Map<String,Integer> treemapdata= new TreeMap<>();
         boolean added;
@@ -23,22 +23,21 @@ public class ListSetMapCombo {
             }
         }
 
-        //print data in set
+//print data in set
         treesetdata.stream().forEach(System.out::println);
         System.out.println("---- Above is set data ----");
 
-        //print data in map
+//print data in map
         treemapdata.forEach((key,value) -> System.out.println(key+" "+value));
         System.out.println("---- Above is tree data ----");
 
-        //print mapdata in sorted - Ofcourse we are using treemap this is not required
-        //in case we are using hashmap this would be useful
+//print mapdata in sorted - Ofcourse we are using treemap this is not required in case we are using hashmap this would be useful
         treemapdata.entrySet().stream()
                 .sorted( (k1,k2) -> k1.getValue().compareTo(k2.getValue()) )
                 .forEach((k -> System.out.println(k.getKey() +" "+k.getValue())));
         System.out.println("---- Above is tree map data sorted by value ----");
 
-        //Sorting by value and storing the result in Map
+//Ascending Sorting by value and storing the result in Map
         Map<String, Integer> valueascsortedmap = treemapdata.entrySet().stream()
                                                 .sorted(Entry.comparingByValue())
                                                 .collect(Collectors.toMap(Entry::getKey, Entry::getValue,
@@ -47,6 +46,7 @@ public class ListSetMapCombo {
         valueascsortedmap.forEach((key,value) -> System.out.println(key+" "+value));
         System.out.println("---- Above is stored map data sorted by value ----");
 
+//Descending Sorting by value and storing the result in Map
         Map<String,Integer> valuedescsortedmap = treemapdata.entrySet().stream()
                 .sorted(Entry.<String,Integer>comparingByValue().reversed())
                 .collect(Collectors.toMap(Entry::getKey, Entry::getValue,
